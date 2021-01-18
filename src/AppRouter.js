@@ -19,11 +19,11 @@ export const AppRouter = () => {
 
       <div className="container mt-4">
         <Switch>
-          <Route exact path="/create" component={CreatePage} />
-          <Route exact path="/read" component={ReadPage} />
-          <Route exact path="/update" component={UpdatePage} />
-          <Route exact path="/delete" component={DeletePage} />
-          <Redirect to="/create" />
+          <Route exact path="./create" component={CreatePage} />
+          <Route exact path="./read" component={ReadPage} />
+          <Route exact path="./update" component={UpdatePage} />
+          <Route exact path="./delete" component={DeletePage} />
+          <Redirect to="./create" />
         </Switch>
       </div>
     </Router>
