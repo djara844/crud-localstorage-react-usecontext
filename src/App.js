@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import { AppRouter } from "./AppRouter";
+import { UserContext } from "./components/UserContext";
+
+const App = () => {
+  const [user, setUser] = useState(
+    localStorage.getItem("users") === null
+      ? []
+      : JSON.parse(localStorage.getItem("users"))
   );
-}
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(user));
+  }, [user]);
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <AppRouter />
+    </UserContext.Provider>
+  );
+};
 
 export default App;
